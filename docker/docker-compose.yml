@@ -1,0 +1,25 @@
+version: '3.5'
+services: 
+  app_go_grpc_server:
+    container_name: app_go_grpc_server
+    # image: golang:1.15
+    build:
+      context: ./server
+      dockerfile: Dockerfile
+    volumes:
+      - ../server/src:/go/src
+    # working_dir: /go/src
+    # command: go run main.go
+    tty: true
+
+  app_go_grpc_client:
+    container_name: app_go_grpc_client
+    # image: golang:1.15
+    build:
+      context: ./client
+      dockerfile: Dockerfile
+    volumes:
+      - ../client/src:/go/src
+    # working_dir: /go/src
+    # command: go run main.go
+    tty: true
